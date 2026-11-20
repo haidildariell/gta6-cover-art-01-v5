@@ -1,0 +1,241 @@
+/* Golden Hour Cover Lab — dark neon-sunset editor theme. */
+
+@font-face {
+  font-family: 'Anton';
+  src: url('fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/Pacifico-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #14041f;
+  color: #f5eefc;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+header.app-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, #ff8a2a, #ff3d7e 55%, #5b1a8a);
+  border-bottom: 3px solid #ffd23e;
+}
+
+header.app-header h1 {
+  margin: 0;
+  font-family: 'Anton', Arial, sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 2px 2px 0 #1c0b2e;
+}
+
+header.app-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #ffe9f6;
+}
+
+main.editor-grid {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 20px 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+section.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+section.controls h2 {
+  margin: 0 0 8px;
+  font-family: 'Anton', Arial, sans-serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: #ffd23e;
+}
+
+.control-block {
+  background: #22103a;
+  border: 1px solid #4a2566;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.control-block label.field-label {
+  display: block;
+  margin: 8px 0 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c9a8e8;
+}
+
+.control-block label.field-label:first-of-type { margin-top: 0; }
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #6b3a96;
+  border-radius: 6px;
+  background: #160a26;
+  color: #f5eefc;
+  font-size: 14px;
+}
+
+input[type="range"] { width: 100%; }
+
+input[type="file"] { width: 100%; }
+
+button {
+  cursor: pointer;
+  border: 1px solid #6b3a96;
+  border-radius: 8px;
+  background: #2c1547;
+  color: #f5eefc;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+button:hover { background: #3d1f60; }
+
+button.active {
+  background: #ff3d7e;
+  border-color: #ffd23e;
+  color: #fff;
+}
+
+button:disabled { opacity: 0.4; cursor: default; }
+
+button.primary {
+  background: linear-gradient(90deg, #ff8a2a, #ff2f92);
+  border-color: #ffd23e;
+  font-weight: bold;
+  color: #fff;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.picker-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#samplePicker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.sample-btn {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #160a26;
+}
+
+.sample-btn img {
+  display: block;
+  width: 100%;
+  height: 74px;
+  object-fit: cover;
+}
+
+.sample-btn span {
+  display: block;
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+section.preview {
+  min-width: 0;
+}
+
+section.preview h2 {
+  margin: 0 0 8px;
+  font-family: 'Anton', Arial, sans-serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: #ffd23e;
+}
+
+#previewCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid #4a2566;
+  background: #22103a;
+  cursor: crosshair;
+}
+
+.preview-hint {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #c9a8e8;
+}
+
+.export-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+footer.app-footer {
+  padding: 12px 20px 24px;
+  font-size: 12px;
+  color: #9d7fc0;
+  text-align: center;
+}
+
+body.shot-mode { background: #14041f; }
+body.shot-mode header.app-header,
+body.shot-mode section.controls,
+body.shot-mode section.preview h2,
+body.shot-mode .preview-hint,
+body.shot-mode .export-row,
+body.shot-mode footer.app-footer { display: none; }
+body.shot-mode main.editor-grid {
+  display: block;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+}
+body.shot-mode section.preview { margin: 0; }
+body.shot-mode #previewCanvas {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  border-radius: 0;
+}
+
+@media (max-width: 900px) {
+  main.editor-grid { grid-template-columns: 1fr; }
+}

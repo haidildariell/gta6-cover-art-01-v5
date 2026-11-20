@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golden Hour Cover Lab — GTA-style cover art maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>GOLDEN HOUR COVER LAB</h1>
+  <p>Turn your photos into GTA-style multi-panel cover art. Offline, no upload.</p>
+</header>
+<main class="editor-grid">
+  <section class="controls" aria-label="Cover controls">
+    <div class="control-block">
+      <h2>1 · Photos</h2>
+      <label class="field-label" for="photoUpload">Upload your photos</label>
+      <input type="file" id="photoUpload" accept="image/*" multiple>
+      <label class="field-label">Or try a sample</label>
+      <div id="samplePicker"></div>
+    </div>
+
+    <div class="control-block">
+      <h2>2 · One-click presets</h2>
+      <div class="button-row">
+        <button type="button" data-preset="photo">Photo Cover</button>
+        <button type="button" data-preset="hero">Hero Photo</button>
+        <button type="button" data-preset="neon">Neon Night</button>
+      </div>
+    </div>
+
+    <div class="control-block">
+      <h2>3 · Layout</h2>
+      <div class="picker-grid" id="layoutPicker"></div>
+    </div>
+
+    <div class="control-block">
+      <h2>4 · Grade</h2>
+      <div class="picker-grid" id="gradePicker"></div>
+    </div>
+
+    <div class="control-block">
+      <h2>5 · Words</h2>
+      <label class="field-label" for="titleInput">Title</label>
+      <input type="text" id="titleInput" value="PALM HEAT" maxlength="24">
+      <label class="field-label" for="subtitleInput">Script subtitle</label>
+      <input type="text" id="subtitleInput" value="golden hour heat" maxlength="40">
+      <label class="field-label" for="taglineInput">Tagline strip</label>
+      <input type="text" id="taglineInput" value="NEW SUMMER 2026" maxlength="40">
+    </div>
+
+    <div class="control-block">
+      <h2>6 · Selected panel</h2>
+      <p id="panelLabel">Panel 1 of 9</p>
+      <label class="field-label" for="panelPhoto">Photo in this panel</label>
+      <select id="panelPhoto"></select>
+      <label class="field-label" for="panelZoom">Zoom</label>
+      <input type="range" id="panelZoom" min="1" max="2.5" step="0.01" value="1.15">
+      <label class="field-label" for="panelOx">Position left / right</label>
+      <input type="range" id="panelOx" min="-0.3" max="0.3" step="0.01" value="0">
+      <label class="field-label" for="panelOy">Position up / down</label>
+      <input type="range" id="panelOy" min="-0.3" max="0.3" step="0.01" value="0">
+      <div class="button-row" style="margin-top:10px">
+        <button type="button" id="fillAllBtn">Fill all panels with this photo</button>
+      </div>
+    </div>
+
+    <div class="control-block">
+      <h2>Undo</h2>
+      <div class="button-row">
+        <button type="button" id="undoBtn">Undo</button>
+        <button type="button" id="redoBtn">Redo</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="preview" aria-label="Live preview">
+    <h2>Live preview</h2>
+    <canvas id="previewCanvas" width="960" height="960"></canvas>
+    <p class="preview-hint">Click a panel to select it, then change its photo, zoom and position. Export below.</p>
+    <div class="export-row">
+      <button type="button" class="primary" id="export-1080x1080">Export 1080 x 1080</button>
+      <button type="button" class="primary" id="export-1080x1350">Export 1080 x 1350</button>
+      <button type="button" class="primary" id="export-1920x1080">Export 1920 x 1080</button>
+    </div>
+  </section>
+</main>
+<footer class="app-footer">
+  Golden Hour Cover Lab — original art, original lettering. Sample photos were
+  generated with an image model for this entry; no real person is depicted.
+</footer>
+<script type="module" src="src/editor.js"></script>
+</body>
+</html>
